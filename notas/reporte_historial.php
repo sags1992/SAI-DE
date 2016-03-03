@@ -99,9 +99,14 @@ class PDF extends FPDF {
 
         $this->SetFont('Arial', '', 20);
         $this->Text(18, 20, 'School Report Booklet', 0, 'C', 0);
-        $this->Ln(10);
+        $this->Ln(30);
     }
 
+//    function Footer() {
+//        $this->SetY(-15);
+//        $this->SetFont('Arial', 'B', 8);
+//        $this->Cell(100, 10, 'descripcion', 0, 0, 'L');
+//    }
 }
 
 $paciente = $_POST['id'];
@@ -124,7 +129,7 @@ if ($_POST['id_curso'] > '0') {
                     from alumno_materia
                     INNER JOIN alumno ON alumno_materia.id_alumno = alumno.id_alumno
                     INNER JOIN materia on alumno_materia.id_materia = materia.id_materia
-                    where alumno.id_alumno  = '$paciente' and materia.id_curso = '$curso' and materia.borrado is null";
+                    where alumno.id_alumno  = '$paciente' and materia.id_curso = '$curso'";
     
     $cursoNombre = $fila2['curso'];
 }
@@ -165,7 +170,7 @@ $pdf = new PDF('P', 'mm', 'a4');
 $pdf->Open();
 $pdf->AddPage();
 $pdf->SetMargins(20, 20, 20);
-$pdf->Ln(4);
+$pdf->Ln(5);
 
 $pdf->SetFont('Arial', '', 10);
 $pdf->Cell(0, 6, "Student's Name: " . $fila['nombre'], 0, 1);
@@ -174,7 +179,7 @@ $pdf->Cell(0, 7, "Level: " . $cursoNombre . '         '
         . '                                        '
         . '', 0, 1);
 
-$pdf->Ln(4);
+$pdf->Ln(6);
 
 $pdf->SetWidths(array(120, 30, 20));
 $pdf->SetFont('Arial', 'B', 8);

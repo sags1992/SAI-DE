@@ -1,0 +1,21 @@
+
+<title>Sistema</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="css/helper.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="css/dropdown/dropdown.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="css/dropdown/dropdown.vertical.rtl.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="css/dropdown/themes/default/default.ultimate.css" media="screen" rel="stylesheet" type="text/css" />
+
+<!--<link rel="stylesheet" href="css/style.css" />-->
+<link rel="stylesheet" href="css/datepicker.css" />
+<!--<link rel="stylesheet" href="css/normalize.css" />-->
+
+<script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#datepicker").datepicker();
+    });
+</script>

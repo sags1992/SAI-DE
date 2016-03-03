@@ -1,0 +1,25 @@
+<?php
+
+include ("./conexion.php");
+$con = conectar();
+$id_alumno_materia = $_POST["id_alumno_materia"];
+$calificacion = $_POST["calificacion"];
+$fecha = $_POST["fecha"];
+$tipo = $_POST["tipo"];
+
+echo $id_alumno_materia;
+echo $calificacion;
+echo $fecha;
+echo $tipo;
+
+
+
+mysqli_query($con, "INSERT INTO examen(id_alumno_materia,  calificacion, fecha, tipo) VALUES('$id_alumno_materia','$calificacion','$fecha','$tipo')");
+mysqli_close($con);
+
+//header('Location: calificaciones_list.php');
+
+?>
+
+
+

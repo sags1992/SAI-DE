@@ -20,7 +20,7 @@ if ($con->query($sql) === TRUE) {
 //mysqli_query($con, $sql);
 //mysqli_close($con);
 
-header('Location: usuario_list_dt.php');
+header('Location: usuario_list.php');
 
 ?>
 

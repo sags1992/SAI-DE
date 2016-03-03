@@ -1,0 +1,88 @@
+
+<html>
+    <head>
+        <title>Tesis</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="css/helper.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="css/dropdown/dropdown.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="css/dropdown/dropdown.vertical.rtl.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="css/dropdown/themes/default/default.ultimate.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="css/styles.css" media="screen" rel="stylesheet" type="text/css" />
+
+        <script language="JavaScript">
+            function aviso(url) {
+                if (!confirm("ALERTA!! esta seguro que desea borrar este registro?")) {
+                    return false;
+                }
+                else {
+                    document.location = url;
+                    return true;
+                }
+            }
+        </script>
+
+    </head>
+    <body onload="document.getElementById('buscar').focus()">
+
+        <h1>Lista de alumnos registrados</h1>
+        <div class="container">
+
+
+            <?php
+            include './menu_alumno.html';
+            ?>
+
+            <br>
+            <br>
+
+
+            <div class="datagrid">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Alumno</th>
+                            <th>Curso/Nivel</th>
+                            <th>Fecha</th>
+                            <th>Calificacion</th>
+                    </thead>
+
+
+                    <?php
+                    session_start();
+                    $id_alumno = $_SESSION['id_alumno'];
+                    $sql = "SELECT * FROM `inscripcion` where id_alumno = '$id_alumno'";
+
+                    include ("./conexion.php");
+                    $con = conectar();
+                    $result = mysqli_query($con, $sql);
+                    while ($row = mysqli_fetch_array($result)) {
+
+
+                        $sql2 = "SELECT * FROM `alumno` where id_alumno = '$row[1]'";
+                        $result2 = mysqli_query($con, $sql2);
+                        while ($row2 = mysqli_fetch_array($result2)) {
+                            $nombre = $row2[1];
+                        }
+
+                        if ($row[2] != null) {
+                            $sql3 = "SELECT * FROM `curso` where id_curso = '$row[2]'";
+                            $result3 = mysqli_query($con, $sql3);
+                            while ($row3 = mysqli_fetch_array($result3)) {
+                                $curso = $row3[1];
+                            }
+                        }
+
+                        echo "<tr>"
+                        . "<td>$nombre</td>"
+                        . "<td>$curso</td>"
+                        . "<td>$row[3]</td>"
+                        . "</tr> \n";
+                    }
+                    mysqli_close($con);
+                    ?>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

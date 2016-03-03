@@ -1,0 +1,32 @@
+<?php
+
+include ("./conexion.php");
+$con = conectar();
+$id_alumno = $_POST["id_alumno"];
+$nombre = $_POST["nombre"];
+$direccion = $_POST["direccion"];
+$telefono = $_POST["telefono"];
+$ci = $_POST["ci"];
+$password = $_POST["password"];
+
+
+
+$sql = "UPDATE `alumno` SET `nombre`='$nombre' WHERE `id_alumno`=$id_alumno";
+
+
+if ($con->query($sql) === TRUE) {
+    echo "Record updated successfully";
+} else {
+    echo "Error updating record: " . $con->error;
+}
+//
+//mysqli_query($con, $sql);
+//mysqli_close($con);
+
+header('Location: alumno_list.php');
+
+?>
+
+
+
+

@@ -1,0 +1,76 @@
+
+<html>
+    <head>
+
+        <?php
+        include './head.php';
+        ?>
+
+        <script language="JavaScript">
+            function aviso(url) {
+                if (!confirm("ALERTA!! esta seguro que desea borrar este registro?")) {
+                    return false;
+                }
+                else {
+                    document.location = url;
+                    return true;
+                }
+            }
+        </script>
+
+    </head>
+    <body onload="document.getElementById('buscar').focus()">
+
+        <h1>Listado de materia por alumno</h1>
+        <div class="container">
+
+
+            <?php
+            include './menu.html';
+            ?>
+
+            <br><br><br><Br>
+
+            <div class="datagrid">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Curso</th>
+                            <th>Materia</th>
+                            <th>Opciones</th>
+                    </thead>
+
+                    <?php
+                    include ("./conexion.php");
+                    $con = conectar();
+                    $sql = "SELECT id_alumno, id_materia, id_alumno_materia FROM `alumno_materia`";
+                    $result = mysqli_query($con, $sql);
+                    while ($row = mysqli_fetch_array($result)) {
+
+                        $result3 = mysqli_query($con, "SELECT curso FROM `curso` WHERE id_curso = $row[0]");
+                        while ($row3 = mysqli_fetch_array($result3)) {
+                            $curso = $row3[0];
+                        }
+
+                        $result2 = mysqli_query($con, "SELECT nombre FROM `materia` WHERE id_materia = $row[1]");
+                        while ($row2 = mysqli_fetch_array($result2)) {
+                            $materia = $row2[0];
+                        }
+
+                        echo "<tr>"
+                        . "<td>$curso</td>"
+                        . "<td>$materia</td>"
+                        ?> 
+                        <td><a href="calificacion_ingresar.php?id=<?php echo $row[2] ?>">Calificaciones</a> </td>
+
+
+                        <?php
+                        "</tr> \n";
+                    }
+                    mysqli_close($con);
+                    ?>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

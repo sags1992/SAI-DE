@@ -1,0 +1,72 @@
+
+<html>
+    <head>
+        
+         <?php include './head.php'; ?>
+        
+        <script language="JavaScript">
+            function aviso(url) {
+                if (!confirm("ALERTA!! esta seguro que desea borrar este registro?")) {
+                    return false;
+                }
+                else {
+                    document.location = url;
+                    return true;
+                }
+            }
+        </script>
+
+    </head>
+    <body onload="document.getElementById('buscar').focus()">
+
+
+        <div class="container">
+            <br>
+            <br>
+            <h1>Listado de Niveles</h1>
+            <?php
+            include './menu.html';
+            ?>
+
+            <br>
+            <br>
+            <br>
+            <!--        <form action="alumno_list_buscar.php" method="post">
+                        Buscar: <input placeholder="Buscar alumno por nombre..." id="buscar" name="buscar" size="80" >
+                        <input type="submit" value="Buscar" hidden="">
+                    </form>-->
+
+            <a href="nivel_nuevo.php" > Agregar Nivel </a>
+
+            <br>
+            <br>
+            <div class="datagrid">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Niveles</th>
+                    </thead>
+
+
+                    <?php
+                    $sql = "SELECT nivel, id_nivel FROM `nivel`";
+
+                    include ("./conexion.php");
+                    $con = conectar();
+                    $result = mysqli_query($con, $sql);
+                    if ($result != null) {
+                        while ($row = mysqli_fetch_array($result)) {
+                            echo "<tr>"
+                            . "<td>$row[0]</td>"
+                            . "</tr> \n";
+                        }
+                    }
+
+                    mysqli_close($con);
+//                }
+                    ?>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

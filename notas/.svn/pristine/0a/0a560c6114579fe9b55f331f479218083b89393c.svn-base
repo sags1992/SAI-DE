@@ -1,0 +1,33 @@
+<?php
+
+include ("./conexion.php");
+$con = conectar();
+$id_alumno_materia = $_POST["id_alumno_materia"];
+$calificacion = $_POST["calificacion"];
+$tipo = $_POST["tipo"];
+$ida = $_POST["ida"];
+
+echo ' - ID AM ',$id_alumno_materia;
+echo ' - CAL ',$calificacion;
+echo ' - Tipo ',$tipo;
+
+if ($tipo == 1) {
+    
+    echo 'Entro ';
+
+    $sql = "UPDATE `alumno_materia` SET `calificacion`='$calificacion' WHERE `id_alumno_materia`= '$id_alumno_materia'";
+
+    if ($con->query($sql) === TRUE) {
+        echo "Record updated successfully";
+    } else {
+        echo "Error updating record: " . $con->error;
+    }
+}
+
+//mysqli_query($con, "INSERT INTO examen(id_alumno_materia,  calificacion, fecha, tipo) VALUES('$id_alumno_materia','$calificacion','$fecha','$tipo')");
+//mysqli_close($con);
+header('Location: calificaciones_list.php?id='.$ida);
+?>
+
+
+

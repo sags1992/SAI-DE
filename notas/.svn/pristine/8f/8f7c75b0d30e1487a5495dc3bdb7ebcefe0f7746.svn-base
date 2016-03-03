@@ -1,0 +1,32 @@
+
+<?php
+session_start();
+$_SESSION['last_access'] = "0";
+?>
+
+<!DOCTYPE html>
+<html >
+    <head>
+        <meta charset="UTF-8">
+        <title>Tesis</title>
+        <link rel="stylesheet" href="css3/style.css">
+    </head>
+    <body>
+        <div class="vid-container">
+            <video id="Video1" class="bgvid back" autoplay="false" muted="muted" preload="auto" loop>
+                <source src="images/milky-way-river-1280hd.mp4.mp4" type="video/mp4">
+            </video>
+            <div class="inner-container">
+                <div class="box">
+                    <h1>Iniciar Sesión</h1>
+                    <form action="validar.php" method="get">
+                        <input type="text" name="usuario" placeholder="Usuario"/>
+                        <input type="password" name="password"  placeholder="Contraseña"/>
+                        <button>Ingresar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src="js3/index.js"></script>
+    </body>
+</html>

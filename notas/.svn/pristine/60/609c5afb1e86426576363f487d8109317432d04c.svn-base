@@ -1,0 +1,75 @@
+
+<html>
+    <head>
+
+        <?php
+        include './head.php';
+        ?>
+
+        <script language="JavaScript">
+            function aviso(url) {
+                if (!confirm("ALERTA!! esta seguro que desea borrar este registro?")) {
+                    return false;
+                }
+                else {
+                    document.location = url;
+                    return true;
+                }
+            }
+        </script>
+
+    </head>
+    <body onload="document.getElementById('buscar').focus()">
+
+        <h1>Lista de materias</h1>
+        <div class="container">
+            <?php
+            include './menu.html';
+            ?>
+
+            <br>
+            <br>
+            <br>
+           
+
+            <a href="materia_nuevo.php" > Agregar Materia </a>
+
+            <br>
+            <br>
+            <div class="datagrid">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Materias</th>
+                            <th>Curso</th>
+                    </thead>
+
+
+                    <?php
+                    $sql = "SELECT nombre, id_curso, id_materia FROM `materia` order by id_curso";
+
+                    include ("./conexion.php");
+                    $con = conectar();
+                    $result = mysqli_query($con, $sql);
+
+                    if ($result != null) {
+                        while ($row = mysqli_fetch_array($result)) {
+                            $result_curso = mysqli_query($con, "SELECT curso FROM `curso` where id_curso = '$row[1]'");
+                            while ($row2 = mysqli_fetch_array($result_curso)) {
+                                echo "<tr>"
+                                . "<td>$row[0]</td>"
+                                . "<td>$row2[0]</td>"
+//                                . "<td>$row[2]</td>"
+                                . "</tr> \n";
+                            }
+                        }
+                    }
+
+                    mysqli_close($con);
+                    ?>
+                </table>
+            </div>
+        </div>
+
+    </body>
+</html>

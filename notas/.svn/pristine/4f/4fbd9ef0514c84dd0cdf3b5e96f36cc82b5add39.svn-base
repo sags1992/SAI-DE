@@ -1,0 +1,39 @@
+-- phpMyAdmin SQL Dump
+-- version 4.5.2
+-- http://www.phpmyadmin.net
+--
+-- Servidor: localhost
+-- Tiempo de generación: 16-02-2016 a las 19:49:06
+-- Versión del servidor: 5.6.28
+-- Versión de PHP: 5.5.30
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `tesis`
+--
+
+--
+-- Volcado de datos para la tabla `nivel`
+--
+
+INSERT INTO `nivel` (`id_nivel`, `nivel`, `borrado`) VALUES
+(1, 'Kids 3', NULL),
+(2, 'Kids 4', NULL),
+(3, 'Kids 5', NULL),
+(4, 'Preparatory I', NULL),
+(5, 'Preparatory II', NULL),
+(6, 'Preparatory III', NULL),
+(7, 'W.E.1', NULL),
+(8, 'W.E.2', NULL);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

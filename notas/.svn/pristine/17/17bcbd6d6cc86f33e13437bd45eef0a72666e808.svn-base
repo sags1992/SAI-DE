@@ -1,0 +1,84 @@
+<html>
+    <head>
+
+
+        <?php
+        include './head.php';
+        ?>
+        <!-- validacion de campos por javaScript -->
+        <script language="JavaScript">
+            function formulariodecontacto() {
+                if (document.formulario.nombre.value == "") {
+                    alert("Por favor ingresa tu Nombre.");
+                    document.formulario.nombre.select();
+                    return false;
+                }
+                if (document.formulario.direccion.value == "") {
+                    alert("Por favor ingresa tu Direccion.");
+                    document.formulario.direccion.select();
+                    return false;
+                }
+
+                return true;
+            }
+            function revisar_correo(str) {
+                var filter = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+                if (filter.test(str)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        </script>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#datepicker").datepicker();
+            });
+        </script>
+
+    </head>
+    <body onload="document.getElementById('nombre').focus()">
+
+        <!-- Agregamos el menu -->
+        <div class="container">
+            <br>
+            <br>
+            <h1>Agregar Eventos</h1>
+
+            <?php
+            include './menu.html';
+            ?>
+            <br>
+            <br>
+            <h1 class="main_title">Ingrese la informacion</h1>
+            <div id="contenedor">
+                <form action="alumno_guardar.php" method="post" name="formulario">
+
+
+                    <div class="label_div">Descripcion: </div>
+                    <input type="text"  class="campo" name="telefono" id="telefono" required="" size="80" placeholder="Ej. Reunion de padres Kids 4..." >
+                    <br>
+                    <br>
+                     <div class="label_div">Fecha / Hora: </div>
+                     
+                    <div class="label_div">Fecha: 
+                        <input type="text" name="fecha" required="" id="datepicker" readonly="readonly" size="12" />
+                    </div>
+                    <div class="label_div">Hora  
+                        <input type="text" name="hora" size="12" placeholder="Ej. 08:00 hs" />
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+
+                    <input type="submit" value="Guardar" />
+                    <br>
+                    <br>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
+

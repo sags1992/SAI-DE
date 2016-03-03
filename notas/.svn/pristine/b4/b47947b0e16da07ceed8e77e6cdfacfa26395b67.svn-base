@@ -1,0 +1,71 @@
+ 
+
+<html>
+    <head>
+        <title>Sistema</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="css/helper.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="css/dropdown/dropdown.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="css/dropdown/dropdown.vertical.rtl.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="css/dropdown/themes/default/default.ultimate.css" media="screen" rel="stylesheet" type="text/css" />
+
+
+        <!-- validacion de campos por javaScript -->
+        <script language="JavaScript">
+            function formulariodecontacto() {
+                if (document.formulario.nombre.value == "") {
+                    alert("Por favor ingresa tu Nombre.");
+                    document.formulario.nombre.select();
+                    return false;
+                }
+                if (document.formulario.direccion.value == "") {
+                    alert("Por favor ingresa tu Direccion.");
+                    document.formulario.direccion.select();
+                    return false;
+                }
+
+                return true;
+            }
+            function revisar_correo(str) {
+                var filter = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+                if (filter.test(str)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        </script>
+    </head>
+    <body onload="document.getElementById('nombre').focus()">
+        <h1>Ingrese la informacion del Alumno</h1>
+
+        <!-- Agregamos el menu -->
+        <?php
+        include './menu.html';
+        ?>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div id="contenedor">
+            <form action="alumno_guardar.php" method="post" name="formulario" onSubmit="return formulariodecontacto()" target="_blank">
+                    
+                Nombre:     <input name="nombre" type="text" class="campo" id="nombre" size="80" required="" placeholder="Escriba el nombre..."/> 
+                <br>
+                <br>
+                Direccion:  <input type="text"  class="campo" name="direccion" id="direccion" size="80" required="" placeholder="Escriba una direccion...">
+                <br>
+                <br>
+                Telefono:  <input type="text"  class="campo" name="telefono" id="telefono" size="80" placeholder="Escriba un numero de telefono..." >
+                <br>
+                <br>
+                CI:  <input type="text"  class="campo" name="ci" id="ci" size="80" required="" placeholder="Escriba su numero de Cedula de Identidad...">
+                <br>
+                <br>
+                <input type="submit" value="Guardar" />
+
+            </form>
+        </div>
+    </body>
+</html>
+

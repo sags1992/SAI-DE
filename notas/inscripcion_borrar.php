@@ -26,7 +26,7 @@ if ($con->query($sql_unidades) === TRUE) {
     echo "Error updating record: " . $con->error;
 }
 
-header('Location: inscripciones_list_dt.php');
+header('Location: inscripciones_list.php');
 
 ?>
 

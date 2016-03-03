@@ -1,0 +1,59 @@
+
+<html>
+    <head>
+        <title>Tesis</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="css/helper.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="css/dropdown/dropdown.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="css/dropdown/dropdown.vertical.rtl.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="css/dropdown/themes/default/default.ultimate.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="css/styles.css" media="screen" rel="stylesheet" type="text/css" />
+
+    </head>
+    <body onload="document.getElementById('buscar').focus()">
+
+        <h1>Lista de alumnos registrados</h1>
+
+        <?php
+        include './menu.html';
+        ?>
+
+        <br>
+        <br>
+        <br>
+        <form action="alumno_list_buscar.php" method="post">
+            Buscar: <input placeholder="Buscar alumno por nombre..." id="buscar" name="buscar" size="80" >
+            <input type="submit" value="Buscar" hidden="">
+        </form>
+        <Br>
+
+        <div class="datagrid">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Direccion</th>
+                        <th>Telefono</th>
+                        <th>Nro. C.I.</th>
+                        <th>Opciones</th>
+                </thead>
+
+
+                <?php
+                
+                $nombre = $_POST["buscar"];
+                $sql = "SELECT nombre, direccion, telefono, ci, id_alumno FROM `alumno` WHERE nombre LIKE '%$nombre%'";
+                include ("./conexion.php");
+                $con = conectar();
+                $result = mysqli_query($con, $sql);
+                while ($row = mysqli_fetch_array($result)) {
+                    echo "<tr><td><a href='alumno_editar.php?id=$row[4]'> $row[0]</a></td><td>$row[1]</td><td>$row[2]</td><td>$row[3]</td><td> <a href='alumno_borrar.php?id=$row[4]'> Borrar </a></td></tr> \n";
+                    mysqli_close($con);
+                }
+                ?>
+            </table>
+        </div>
+
+    </body>
+</html>

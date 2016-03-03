@@ -10,7 +10,7 @@ $password = $_POST["password"];
 mysqli_query($con, "INSERT INTO alumno(nombre, direccion, telefono, ci, password, borrado) VALUES('$nombre','$direccion','$telefono','$ci','$password','0')");
 mysqli_close($con);
 
-header('Location: alumno_list_jq.php');
+header('Location: alumno_list.php');
 
 ?>
 

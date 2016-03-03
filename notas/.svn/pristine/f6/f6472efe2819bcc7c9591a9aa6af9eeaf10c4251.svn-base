@@ -1,0 +1,30 @@
+-- phpMyAdmin SQL Dump
+-- version 4.5.2
+-- http://www.phpmyadmin.net
+--
+-- Servidor: localhost
+-- Tiempo de generación: 13-02-2016 a las 12:43:55
+-- Versión del servidor: 5.6.28
+-- Versión de PHP: 5.5.30
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `tesis`
+--
+
+-- --------------------------------------------------------
+
+
+
+INSERT INTO `curso` (`id_curso`, `curso`) VALUES
+(3, 'Guia Interprete'),
+(2, 'Tecnico en idioma extranjero ingles'),
+(1, 'Auxiliar en Idioma extranjero ingles');

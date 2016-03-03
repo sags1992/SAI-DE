@@ -1,0 +1,121 @@
+
+<?php
+include ("./conexion.php");
+$con = conectar();
+$id = $_GET["id"];
+$sql = "SELECT id_alumno, id_materia FROM `alumno_materia` where id_alumno_materia = '$id'";
+$result = mysqli_query($con, $sql);
+while ($row = mysqli_fetch_array($result)) {
+    $id_alumno = $row[0];
+    $id_materia = $row[1];
+}
+?>
+
+
+
+
+<html>
+    <head>
+        <title>4k</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="css/helper.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="css/dropdown/dropdown.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="css/dropdown/dropdown.vertical.rtl.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="css/dropdown/themes/default/default.ultimate.css" media="screen" rel="stylesheet" type="text/css" />
+
+
+        <?php
+        include './head.php';
+        ?>
+
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#datepicker").datepicker();
+            });
+        </script>
+
+    </head>
+    <body onload="document.getElementById('nombre').focus()">
+        <h1>Ingrese la informacion del Alumno</h1>
+
+        <div class="container">
+
+            <?php
+            include './menu.html';
+            ?>
+            <br>
+            <br>
+
+
+            <div class="datagrid">
+
+                <br>
+                <br>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Curso</th>
+                            <th>Materia</th>
+                            <th>Calificacion</th>
+                    </thead>
+
+
+                    <?php
+                    $sql4 = "SELECT id_alumno_materia FROM `alumno_materia` where id_alumno = '$id_alumno'";
+                    $result4 = mysqli_query($con, $sql4);
+                    while ($row4 = mysqli_fetch_array($result4)) {
+
+                        $sql2 = "SELECT  FROM `examen` where id_alumno_materia = '$row4[0]'";
+                        $result2 = mysqli_query($con, $sql2);
+                        while ($row2 = mysqli_fetch_array($result2)) {
+                            echo "<tr>"
+                            . "<td> $row2[0]</td>"
+                            . "<td>$row2[1]</td>"
+                            . "<td>$row2[2]</td>"
+                            . "<td>$row2[3]</td>"
+                            . "</tr> \n";
+                        }
+                    }
+                    mysqli_close($con);
+                    ?>
+                </table>
+
+            </div>
+
+            <br>
+            <br>
+            <br>
+
+            <h1 class="main_title">Ingrese nueva calificacion</h1>
+            <div id="contenedor">
+                <form action="calificacion_guardar.php" method="post" name="formulario">
+
+                    <input name="id_alumno_materia" type="text" class="campo" id="id_alumno_materia" hidden=""  value="<?php echo $id ?> "/> 
+
+                    <div class="label_div">Calificacion: </div>  <input type="number"  class="campo" name="calificacion" id="calificacion" value=""/> 
+                    <br>
+                    <br>
+                    <div class="label_div">Tipo de examen: </div>
+                    <select name="tipo" required="">
+                        <option value="1">Parcial</option>
+                        <option value="2">Final</option>
+                        <option value="3">Otros</option>
+                    </select>
+                    <br><br>
+
+                    <div class="label_div">Fecha: </div>
+                    <input type="text" name="fecha" id="datepicker" readonly="readonly" size="12" />
+                    <br>
+                    <br>
+
+
+                    <input type="submit" value="Guardar" />
+
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
+

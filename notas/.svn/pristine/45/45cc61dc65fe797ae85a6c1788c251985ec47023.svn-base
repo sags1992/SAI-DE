@@ -1,0 +1,26 @@
+<?php
+
+include ("./conexion.php");
+$con = conectar();
+$nombre = $_POST["alumno"];
+$id_curso = $_POST["id_curso"];
+
+//echo $nombre;
+//echo $id_curso;
+
+$sql = "SELECT * FROM `alumno` where nombre = '$nombre'";
+$result = mysqli_query($con, $sql);
+while ($row = mysqli_fetch_array($result)) {
+    $id_alumno = $row[0];
+}
+
+echo $id_alumno;
+
+mysqli_query($con, "INSERT INTO inscripcion(id_alumno, id_curso) VALUES('$id_alumno','$id_curso')");
+mysqli_close($con);
+
+//header('Location: alumno_list.php');
+?>
+
+
+

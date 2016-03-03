@@ -1,0 +1,72 @@
+
+<html>
+    <head>
+
+        <?php
+        include './head.php';
+        ?>
+
+        <script language="JavaScript">
+            function aviso(url) {
+                if (!confirm("ALERTA!! esta seguro que desea borrar este registro?")) {
+                    return false;
+                }
+                else {
+                    document.location = url;
+                    return true;
+                }
+            }
+        </script>
+
+    </head>
+    <body onload="document.getElementById('buscar').focus()">
+
+        <div class="container">
+
+
+            <br>
+            <br>
+            <h1>SAI-DE</h1>
+            <?php
+            include './menu.html';
+            ?>
+
+            <br>
+            <br>
+
+
+
+            <div class="datagrid">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Curso</th>
+                            <th>Fecha</th>
+                    </thead>
+
+
+                    <tr>
+                        <td>
+                            Tecnico en idioma extranjero ingles - Examen de Comunicacion Oral Pre-Intermediate Leading to B1 
+                        </td>
+                        <td>
+                            16-03-2016
+                        </td>
+
+
+
+                    </tr>
+                    <tr>
+
+                        <td>
+                            Tecnico en idioma extranjero ingles - Reunion de Padres
+                        </td>
+                        <td>
+                            17-03-2016
+                        </td>
+                    </tr>    
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

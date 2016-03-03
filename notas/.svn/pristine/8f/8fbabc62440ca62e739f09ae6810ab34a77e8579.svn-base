@@ -1,0 +1,33 @@
+
+<link href="css/helper.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="css/dropdown/dropdown.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="css/dropdown/dropdown.vertical.rtl.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="css/dropdown/themes/default/default.ultimate.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="css/styles.css" media="screen" rel="stylesheet" type="text/css" />
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<ul id="nav" class="dropdown dropdown-horizontal">
+    <li><a href="principal.php">Inicio</a></li>
+    <li><span class="dir">Archivo</span>
+        <ul>
+            <li><a href="nivel_list.php">Niveles</a></li>
+            <li><a href="curso_list.php">Cursos</a></li>
+            <li><a href="materia_list.php">Materias</a></li>
+        </ul>
+    </li>
+    <li><a href="alumno_list.php">Alumnos</a></li>
+    <li><span class="dir">Inscripciones</span>
+        <ul>
+            <li><a href="inscripciones_list.php">Listado de Inscriptos</a></li>
+            <li><a href="inscripciones.php">Inscribir Alumnos</a></li>
+        </ul>
+    </li>
+    <li><span class="dir">Informaciones</span>
+        <ul>
+            <li><a href="">Eventos</a></li>
+        </ul>
+    </li>
+    <li><a href="index.html">Salir</a></li>
+
+</ul>

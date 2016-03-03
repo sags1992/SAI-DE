@@ -1,0 +1,98 @@
+<?php
+
+$id_nivel = '0';
+$id_curso = '0';
+$cursoOK = '0';
+$nivelOK = '0';
+
+if ($_POST['id_curso'] != '0') {
+    $id_curso = $_POST['id_curso'];
+    $cursoOK = '1';
+}
+
+if ($_POST['id_nivel'] != '0') {
+    $id_nivel = $_POST['id_nivel'];
+    $nivelOK = '1';
+}
+
+if (($id_curso > '0') and ( $id_nivel > '0')) {
+    header('Location: error.php?cod=3');
+}
+if (($id_curso == '0') and ( $id_nivel == '0')) {
+    header('Location: error.php?cod=3');
+}
+
+echo 'Curso ', $id_curso;
+
+
+include ("./conexion.php");
+$con = conectar();
+$nombre = $_POST["alumno"];
+$fecha = $_POST["fecha"];
+
+$sql = "SELECT * FROM `alumno` where nombre = '$nombre'";
+$result = mysqli_query($con, $sql);
+while ($row = mysqli_fetch_array($result)) {
+    $id_alumno = $row[0];
+    $encontrado = '1';
+}
+
+if ($encontrado == '0') {
+    header('Location: error.php?cod=1');
+}
+
+if ($cursoOK == '1') {
+    
+
+    mysqli_query($con, "INSERT INTO inscripcion(id_alumno, id_curso, fecha, tipo) VALUES('$id_alumno','$id_curso','$fecha','1')");
+
+    $sql3 = "SELECT id_materia FROM `materia` where id_curso = '$id_curso'";
+    $result3 = mysqli_query($con, $sql3);
+    while ($row3 = mysqli_fetch_array($result3)) {
+
+        $sql2 = "INSERT INTO alumno_materia(id_alumno, id_materia, anho) VALUES('$id_alumno','$row3[0]','2016')";
+        if ($con->query($sql2) === TRUE) {
+            echo "Record updated successfully";
+        } else {
+            echo "Error updating record: " . $con->error;
+        }
+    }
+}
+
+
+
+if ($nivelOK == '1') {
+echo 'ENTRO';
+    
+    echo 'nivel ', $id_nivel;
+    
+    mysqli_query($con, "INSERT INTO inscripcion(id_alumno, id_nivel, fecha, tipo) VALUES('$id_alumno','$id_nivel','$fecha','2')");
+    
+    
+    $sql3 = "SELECT id_nivel_unidades FROM `nivel_unidades` where id_nivel = '$id_nivel'";
+    $result3 = mysqli_query($con, $sql3);
+    while ($row3 = mysqli_fetch_array($result3)) {
+
+        $sql2 = "INSERT INTO alumno_unidades(id_alumno, id_nivel_unidades, anho) VALUES('$id_alumno','$row3[0]','2016')";
+        if ($con->query($sql2) === TRUE) {
+            echo "Record updated successfully";
+        } else {
+            echo "Error updating record: " . $con->error;
+        }
+    }
+    
+    
+}
+
+
+
+
+mysqli_close($con);
+
+
+
+header('Location: inscripciones_list.php');
+?>
+
+
+

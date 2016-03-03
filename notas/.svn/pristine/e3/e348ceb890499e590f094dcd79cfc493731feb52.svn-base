@@ -1,0 +1,79 @@
+
+<?php
+
+$id = $paciente = $_GET['id'];
+
+?>
+
+<html>
+    <head>
+
+
+    </head>
+    <body onload="document.getElementById('nombre').focus()">
+        <h1>Tesis</h1>
+
+        <!-- Agregamos el menu -->
+        <div class="container">
+
+
+            <?php
+            include './menu.html';
+            ?>
+            <br>
+            <br>
+            <h1 class="main_title">Elija un curso o nivel</h1>
+            <div id="contenedor">
+                <form action="reporte_historial.php" method="post" name="formulario">
+
+                   <div class="label_div">Alumno: </div>
+                   
+                   
+                   <br>
+                   <br>
+                   <div class="label_div">Cursos: </div>
+                    <select name="id_curso">
+                        <option value="0">Elija un curso...</option>
+                        <?php
+                        include ("./conexion.php");
+                        $con = conectar();
+                        $sql = "SELECT id_curso, curso FROM `curso` order by curso";
+                        $result = mysqli_query($con, $sql);
+                        while ($row = mysqli_fetch_array($result)) {
+                            ?>
+                            <option value="<?php echo $row[0] ?>"><?php echo $row[1] ?></option>  
+                            <?php
+                        }
+                        
+                        ?>
+                    </select>
+                   <br>
+                   <br>
+                   
+                   
+                     <div class="label_div">Niveles: </div>
+                    <select name="id_nivel" >
+                        <option value="0">Elija nivel...</option>
+                        <?php
+                        $sql2 = "SELECT id_nivel, nivel FROM `nivel` order by nivel";
+                        $result2 = mysqli_query($con, $sql2);
+                        while ($row2 = mysqli_fetch_array($result2)) {
+                            ?>
+                            <option value="<?php echo $row2[0] ?>"><?php echo $row2[1] ?></option>  
+                            <?php
+                        }
+
+                        ?>
+                    </select>
+                    <br>
+                    <br>
+                    <input type="text" hidden="" name="id" value="<?php echo $id ?>"> 
+                    <input type="submit" value="Continuar"> 
+                    <br>
+                    <br>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
+

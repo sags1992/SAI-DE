@@ -19,7 +19,7 @@ if ($con->query($sql) === TRUE) {
 //mysqli_query($con, $sql);
 //mysqli_close($con);
 
-header('Location: eventos_dt.php');
+header('Location: eventos.php');
 
 ?>
 

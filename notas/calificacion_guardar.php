@@ -30,7 +30,7 @@ if ($tipo == 2) {
     }
 }
 
-header('Location: calificaciones_list_dt.php?id='.$ida);
+header('Location: calificaciones_list.php?id='.$ida);
 ?>
 
 

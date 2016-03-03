@@ -1,0 +1,48 @@
+<!doctype html>
+
+
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <title>SAI-DE</title>
+        <link href="css/style_login.css" media="screen" rel="stylesheet" type="text/css" />
+
+    </head>
+
+    <body>
+
+        <?php
+        session_start();
+        $_SESSION['last_access'] = "0";
+        ?>
+
+        <div id="login-form">
+            
+            <img src="images/logo2.png" width="300" height="150" alt=""></img>
+            
+           
+            <fieldset>
+                <form action="validar.php" method="get">
+<!--                    <input type="text" required value="Usuario" name="usuario" onBlur="if (this.value == '')
+                                this.value = 'Usuario'"  onFocus="if (this.value == 'Usuario')
+                                            this.value = ''"> -->
+<!--                    <input type="password" required value="Password" name="password" onBlur="if (this.value == '')
+                                this.value = 'Password'" onFocus="if (this.value == 'Password')
+                                            this.value = ''"> -->
+                    Usuario <input type="text" required="" value="" name="usuario" > 
+                  
+                    <br>
+                    <br>
+                    Contraseña
+                    <input type="password" required="" value="" name="password"> 
+                    <br>
+                    <br>
+
+                    <input type="submit" value="Iniciar Sesion">
+                    <footer class="clearfix">
+                    </footer>
+                </form>
+            </fieldset>
+        </div> 
+    </body>
+</html>

@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html >
+    <head>
+        <meta charset="UTF-8">
+        <title>Tesis</title>
+        <link rel="stylesheet" href="css3/style.css">
+    </head>
+    <body>
+        <div class="vid-container">
+            <video id="Video1" class="bgvid back" autoplay="false" muted="muted" preload="auto" loop>
+                <source src="images/milky-way-river-1280hd.mp4.mp4" type="video/mp4">
+            </video>
+            <div class="inner-container">
+            </div>
+            <script src="js3/index.js"></script>
+
+
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+            <link href="css/helper.css" media="screen" rel="stylesheet" type="text/css" />
+            <link href="css/dropdown/dropdown.css" media="screen" rel="stylesheet" type="text/css" />
+            <link href="css/dropdown/dropdown.vertical.rtl.css" media="screen" rel="stylesheet" type="text/css" />
+            <link href="css/dropdown/themes/default/default.ultimate.css" media="screen" rel="stylesheet" type="text/css" />
+
+            <link rel="stylesheet" href="css/datepicker.css" />
+
+            <script type="text/javascript" src="js/script.js"></script>
+            <script type="text/javascript" src="js/jquery.min.js"></script>
+            <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+

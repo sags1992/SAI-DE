@@ -1,0 +1,105 @@
+<html>
+    <head>
+        <title>Tesis</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="css/helper.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="css/dropdown/dropdown.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="css/dropdown/dropdown.vertical.rtl.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="css/dropdown/themes/default/default.ultimate.css" media="screen" rel="stylesheet" type="text/css" />
+
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/datepicker.css" />
+        <link rel="stylesheet" href="css/normalize.css" />
+        
+        <script type="text/javascript" src="js/script.js"></script>
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#datepicker").datepicker();
+            });
+        </script>
+
+
+    </head>
+    <body onload="document.getElementById('nombre').focus()">
+        <h1>SAI-DE</h1>
+
+        <div class="container">
+            <?php
+            include './menu.html';
+            ?>
+            <br>
+            <br>
+
+            <h1 class="main_title">Ingrese la información</h1>
+            <div class="content">
+                <form  action="inscripciones_guardar.php" method="post">
+                    <div class="label_div">Alumno : </div>
+                    <div class="input_container">
+                        <input type="text" id="country_id" name="alumno" onkeyup="autocomplet()">
+                        <ul id="country_list_id"></ul>
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="label_div">Curso : </div>
+                    <select name="id_curso" required="">
+                        <option value="">Elija un curso</option>
+                        <?php
+                        include ("./conexion.php");
+                        $con = conectar();
+                        $sql = "SELECT id_curso, curso FROM `curso` order by curso";
+                        $result = mysqli_query($con, $sql);
+                        while ($row = mysqli_fetch_array($result)) {
+                            ?>
+                            <option value="<?php echo $row[0] ?>"><?php echo $row[1] ?></option>  
+                            <?php
+                        }
+
+                        mysqli_close($con);
+                        ?>
+                    </select>
+                    <div class="label_div">Nivel : </div>
+                    <select name="id_nivel" required="">
+                        <option value="">Elija un Nivel</option>
+                        <?php
+                        include ("./conexion.php");
+                        $con = conectar();
+                        $sql = "SELECT id_nivel, nivel FROM `nivel` order by nivel";
+                        $result = mysqli_query($con, $sql);
+                        while ($row = mysqli_fetch_array($result)) {
+                            ?>
+                            <option value="<?php echo $row[0] ?>"><?php echo $row[1] ?></option>  
+                            <?php
+                        }
+
+                        mysqli_close($con);
+                        ?>
+                    </select>
+
+
+                    <br>
+                    <br>
+
+                    <div class="label_div">Fecha : </div>
+                    <input type="text" name="datepicker" id="datepicker" readonly="readonly" size="12" />
+                    <br>
+                    <br>
+
+                    <input type="submit" value="Guardar">
+                </form>
+
+
+                <div id="cal1Container"></div>
+            </div>   
+        </div>
+    </body>
+</html>
+
+
+
+
+
+

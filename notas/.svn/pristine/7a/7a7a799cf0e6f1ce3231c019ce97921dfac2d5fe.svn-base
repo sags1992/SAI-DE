@@ -1,0 +1,16 @@
+<?php
+
+include ("./conexion.php");
+$con = conectar();
+$id = $_GET["id"];
+echo $id;
+
+mysqli_query($con, "DELETE FROM `alumno` WHERE id_alumno = '$id'");
+mysqli_close($con);
+
+header('Location: alumno_list.php');
+
+?>
+
+
+

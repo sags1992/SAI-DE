@@ -1,0 +1,15 @@
+<?php
+
+include ("./conexion.php");
+$con = conectar();
+$usuario = $_POST["usuario"];
+$password = $_POST["password"];
+mysqli_query($con, "INSERT INTO alumno(nombre, direccion, telefono, ci, password) VALUES('$nombre','$direccion','$telefono','$ci','$password')");
+mysqli_close($con);
+
+header('Location: alumno_list.php');
+
+?>
+
+
+

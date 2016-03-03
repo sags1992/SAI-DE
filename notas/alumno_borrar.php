@@ -19,7 +19,7 @@ if ($con->query($sql) === TRUE) {
     echo "Error updating record: " . $con->error;
 }
 
-header('Location: alumno_list_jq.php');
+header('Location: alumno_list.php');
 
 ?>
 
