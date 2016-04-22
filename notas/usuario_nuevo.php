@@ -9,7 +9,7 @@
 
             <br>
             <br>
-            <h1>Agregar Nuevo usuario</h1>
+            <h1>Agregar Nuevo Usuario</h1>
             <?php
             include './menu.html';
             ?>

@@ -37,7 +37,7 @@
 
             <br>
             <br>
-        <h1>SAI-DE</h1>
+        <h1>Agregar Alumno</h1>
             <?php
             include './menu.html';
             ?>
