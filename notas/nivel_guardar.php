@@ -1,0 +1,14 @@
+<?php
+
+include ("./conexion.php");
+$con = conectar();
+$nivel = $_POST["nivel"];
+mysqli_query($con, "INSERT INTO nivel(nivel) VALUES('$nivel')");
+mysqli_close($con);
+
+header('Location: nivel_list_dt.php');
+
+?>
+
+
+
